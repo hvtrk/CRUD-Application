@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= headding %></p>
+    <p><%= display%></p>
+    
+    <div class="conainer-fluid ">
+      <div class="row">
+        <!-- Create a Data entry in the Database  -->
+        <div class="col">
+            <form action="/users/create" method="POST">
+              <div class="form-group">
+                  <label for="formGroupExampleInput">Name</label>
+                  <input type="text" class="form-control" name="inputName" id="formGroupExampleInput" placeholder="Name">
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" name="inputEmail" aria-describedby="emailHelp" placeholder="Email">
+              </div>
+              <div class="form-group">
+                  <label for="formGroupExampleInput">Age</label>
+                  <input type="text" name="inputAge" class="form-control" id="formGroupExampleInput" placeholder="Age">
+                </div>
+              <button class="btn btn-primary">Insert</button>
+            </form>
+        </div>
+
+        <!-- update a Data Entry in the  DataBase  -->
+        <div class="col">
+            <form action="/users/update" method="POST">
+              <div class="form-group">
+                  <label for="formGroupExampleInput">Name</label>
+                  <input type="text" class="form-control" name="Name" id="formGroupExampleInput" placeholder="Name">
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" name="Email" aria-describedby="emailHelp" placeholder="Email">
+              </div>
+              <div class="form-group">
+                  <label for="formGroupExampleInput">Age</label>
+                  <input type="text" name="Age" class="form-control" id="formGroupExampleInput" placeholder="Age">
+                </div>
+              <button class="btn btn-primary">Update</button>
+            </form>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- View Data -->
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Age</th>
+            <th scope="col">Controls</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%users.forEach(function (crud) {%>
+          <tr>
+            <td id="name " name="delId">
+              <%=crud.delId %>
+            
+            </td>
+            <td id="name " name="delName">
+              <%=crud.delName %>
+              
+            </td>
+            <td id="email" name="delEmail">
+              <%=crud.delEmail %>
+            </td>
+            <td id="age " name="delAge">
+              <%=crud.delAge %>
+            </td>
+            <td>
+              <button type="submit" class="btn btn-primary" onclick="location.href='/users/delete/<%=crud.delId%>'">Delete</button>
+            </td>
+          </tr>
+          <%});%>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
